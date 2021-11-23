@@ -1,0 +1,102 @@
+body {
+    font: 14px "Lucida Sans Unicode", "Lucida Grande", Sans-Serif; /* Рубленый шрифт текста */
+    margin: 0; /* Отступы на странице */
+   }
+   h1 {
+    font-size: 36px "Lucida Sans Unicode", "Lucida Grande", Sans-Serif; /* Размер шрифта заголовка шапки */
+    margin: 0; /* Убираем отступы */
+    color: #CAD4D6; /* Цвет текста заголовка шапки */
+   }
+   h3 {
+	font-size: 16px;   
+    margin-top: 0; /* Убираем отступ сверху */
+   }
+   h2 {
+    
+    margin-top: 0; /* Убираем отступ сверху */
+   }
+   .header {
+    background: #252F48; /* Цвет фона шапки */
+    padding: 7px; /* Поля вокруг текста */
+   }
+   .header2 {
+    font-size: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;   
+    color: #CAD4D6;   
+    background: #252F48; /* Цвет фона шапки */
+    padding: 5px; /* Поля вокруг текста */
+   }
+   .header3 {
+    font-size: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;   
+    color: #CAD4D6;   
+    background: #252F48; /* Цвет фона шапки */
+    padding: 10px; /* Поля вокруг текста */
+   }
+   .sidebar {
+    float: left; /* Обтекание справа */
+    border: 1px solid #37B5A5; /* Рамка левого меню */
+    width: 20%; /* Ширина левой колонки */
+    padding: 5px; /* Поля внутри блока */
+    margin: 10px 10px 20px 5px; /* Значения отступа от блока */
+   }
+   .content {
+    margin: 10px 5px 20px 25%; /* Значения отступа от левого блока */
+    padding: 5px; /* Поля внутри блока */
+    border: 1px solid #37B5A5; /* Рамка контента */
+   }
+   .footer {
+    font-size: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;   
+    color: #CAD4D6;   
+    background: #252F48; /* Цвет фона подвал (футера) */
+    padding: 5px; /* Поля внутри блока */
+    color: #CAD4D6; /* Цвет текста футера */
+    clear: left; /* Отменяем действие float */
+   }
+   .table_dark {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+  position: sticky;
+  font-size: 14px;
+  width:90%;
+  text-align: left;
+  border-collapse: collapse;
+  background: #252F48;
+  margin: 10px;
+  
+}
+.table_dark th {
+  color: #EDB749;
+  border-bottom: 1px solid #37B5A5;
+  padding: 12px 17px;
+}
+.table_dark td {
+  color: #CAD4D6;
+  border-bottom: 1px solid #37B5A5;
+  border-right:1px solid #37B5A5;
+  padding: 7px 17px;
+  position: relative;
+  
+}
+.table_dark tr:last-child td {
+  border-bottom: none;
+}
+.table_dark td:last-child {
+  border-right: none;
+  position: relative;
+}
+.table_dark tr:hover td {
+  text-decoration: underline;
+}
+.table_dark a {
+  display: inline-block;
+  border-bottom: 1px solid #37B5A5;
+  padding: 5px 10px;
+  background: #2ca184;
+  box-shadow: 2px 2px 0 0 #a22800;
+  position: relative;
+}
+.table_dark a:hover {
+  box-shadow: none;
+  border-bottom: 1px solid #37B5A5;
+  top: 2px;
+  left: 2px;
+}
+   

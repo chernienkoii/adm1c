@@ -1,0 +1,21 @@
+version: '3'
+services:
+    nginx:
+        build:
+          context: .
+          dockerfile: Dockerfile-nginx
+        image: adm1c-nginx:1c
+        hostname: nginx
+        container_name: nginx
+        ports:
+            - "80:80"
+        links:
+            - php
+    php:
+        build:
+          context: .
+          dockerfile: Dockerfile-php
+        image: php-fpm7.4:1c
+        hostname: php
+        container_name: php
+

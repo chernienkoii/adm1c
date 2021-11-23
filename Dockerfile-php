@@ -1,0 +1,51 @@
+FROM php:7.4-fpm
+ENV GOSU_VERSION 1.7
+ENV TZ=Europe/Kiev
+ENV DEBIAN_FRONTEND noninteractive
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN apt-get update \
+#        && ACCEPT_EULA=Y apt-get -qq install ttf-mscorefonts-installer \
+        && apt-get install -y \
+        libfreetype6 \
+        libgsf-1-common \
+        unixodbc glib2.0 \
+        curl \
+        wget \
+        git \
+        libfreetype6-dev \
+        libjpeg62-turbo-dev \
+	libpng-dev \
+	libonig-dev \
+	libzip-dev \
+	libmcrypt-dev \
+        && pecl install mcrypt-1.0.3 \
+	&& docker-php-ext-enable mcrypt \
+        && docker-php-ext-install -j$(nproc) iconv mbstring mysqli pdo_mysql zip \
+	&& docker-php-ext-configure gd --with-freetype --with-jpeg \
+        && docker-php-ext-install -j$(nproc) gd \
+        && `#----- Install gosu -----` \
+        && wget --quiet --output-document /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$(dpkg --print-architecture)" \
+        && chmod +x /usr/local/bin/gosu \
+        && gosu nobody true
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+ADD php.ini /usr/local/etc/php/conf.d/40-custom.ini
+
+WORKDIR /var/www
+ADD ./deb/*.deb /tmp/
+ENV PLATFORM_VERSION 83
+ENV SERVER_VERSION 8.3.12-1567
+RUN dpkg --install /tmp/1c-enterprise$PLATFORM_VERSION-common_${SERVER_VERSION}_amd64.deb 2> /dev/null \
+  && dpkg --install /tmp/1c-enterprise$PLATFORM_VERSION-server_${SERVER_VERSION}_amd64.deb 2> /dev/null \
+  && dpkg --install /tmp/1c-enterprise$PLATFORM_VERSION-ws_${SERVER_VERSION}_amd64.deb 2> /dev/null \
+  && rm /tmp/*.deb \
+  && mkdir --parents /var/log/1C /home/usr1cv8/.1cv8/1C/1cv8/conf \
+  && chown --recursive usr1cv8:grp1cv8 /var/log/1C /home/usr1cv8
+
+COPY source/index.php /var/www/
+COPY source/external.css /var/www/
+COPY container/logcfg.xml /home/usr1cv8/.1cv8/1C/1cv8/conf
+RUN rm -rf /tmp/
+
+CMD [ "php-fpm"]

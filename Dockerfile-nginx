@@ -1,0 +1,6 @@
+FROM nginx:alpine
+# Copy the working dir to the image's web root
+COPY ./source/index.php /var/www/
+COPY ./source/external.css /var/www/
+COPY ./adm1c /etc/nginx/conf.d/adm1c.conf
+EXPOSE 80
