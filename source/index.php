@@ -14,12 +14,6 @@
 			<input name="CL" id="CL" value="daca2f07-0606-4034-8128-c1e57e1fc643" type="hidden" readonly >
 			<input type="submit" name="DBSELECT" value="HUB" style="width:120px;height:25px"/>
         </form>
-	<form method="POST">
-			<input name="SU" id="SU" value="" style="width:220px;height:25px" placeholder="тут вводить только session" >
-			<input name="SRV" id="SRV" value="192.168.0.2" type="hidden" readonly >
-			<input name="CL" id="CL" value="daca2f07-0606-4034-8128-c1e57e1fc643" type="hidden" readonly >
-			<input type="submit" name="USRSELECT" value="DEL session HUB" style="width:150px;height:25px"/>
-        </form>	
 	<div class="header2"><h3>ERP</h3></div>
 	<form method="POST">
     		<input name="DB" id="DB" value="065a2b34-1fc7-46c6-a6e5-447b3c72e510" type="hidden" readonly >
@@ -27,24 +21,12 @@
 			<input name="CL" id="CL" value="2a4a0eb1-50a6-459c-bd95-5f125e3c92c6" type="hidden" readonly >
 			<input type="submit" name="DBSELECT" value="ERP" style="width:120px;height:25px" />
         </form>
-	<form method="POST">
-			<input name="SU" id="SU" value="" style="width:220px;height:25px" placeholder="тут вводить только session" >			
-			<input name="SRV" id="SRV" value="192.168.0.7:1645" type="hidden" readonly >
-			<input name="CL" id="CL" value="2a4a0eb1-50a6-459c-bd95-5f125e3c92c6" type="hidden" readonly >
-			<input type="submit" name="USRSELECT" value="DEL session ERP" style="width:150px;height:25px"/>
-        </form>
 	<div class="header2"><h3>WMS</h3></div>
 	<form method="POST">
     		<input name="DB" id="DB" value="fff78869-3a75-4fde-ac53-2a7ae9a71d44" type="hidden" readonly >
 			<input name="SRV" id="SRV" value="192.168.0.4" type="hidden" readonly >
 			<input name="CL" id="CL" value="5ba0af8c-077f-413b-a445-912db31da02b" type="hidden" readonly >
 			<input type="submit" name="DBSELECT" value="WMS" style="width:120px;height:25px" />
-        </form>
-	<form method="POST">
-			<input name="SU" id="SU" value="" style="width:220px;height:25px" placeholder="тут вводить только session" >			
-			<input name="SRV" id="SRV" value="192.168.0.4" type="hidden" readonly >
-			<input name="CL" id="CL" value="5ba0af8c-077f-413b-a445-912db31da02b" type="hidden" readonly >
-			<input type="submit" name="USRSELECT" value="DEL session WMS" style="width:150px;height:25px"/>
         </form>
   </div>
   <div class="content">
