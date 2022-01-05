@@ -56,6 +56,7 @@
                 <th>User Name</th>
                 <th>Session</th>
                 <th>Session-ID</th>
+				<th>Action</th>
             </tr>
 <?php
 $DB=htmlspecialchars($_POST['DB']);
@@ -65,17 +66,26 @@ $SU=htmlspecialchars($_POST['SU']);
 
 if( isset( $_POST['DBSELECT'] ) )
     {
-        exec(" /opt/1C/v8.3/x86_64/rac $SRV session list --cluster=$CL  --infobase=$DB | grep user-name | cut -d':' -f2", $username);
+
+		exec(" /opt/1C/v8.3/x86_64/rac $SRV session list --cluster=$CL  --infobase=$DB | grep user-name | cut -d':' -f2", $username);
         exec(" /opt/1C/v8.3/x86_64/rac $SRV session list --cluster=$CL  --infobase=$DB | grep -E 'session(\s|$)' | cut -d':' -f2 | sed s/' '//g", $session);
         exec(" /opt/1C/v8.3/x86_64/rac $SRV session list --cluster=$CL  --infobase=$DB | grep -E 'session-id(\s|$)' | cut -d':' -f2 | sed s/' '//g", $sessionid);
-
-        array_map(function($V1, $V2, $V3) {
+		$srv1C = array_fill(0 , count($username) , $SRV);
+		$cluster1C = array_fill(0 , count($username) , $CL);
+		array_map(function($V1, $V2, $V3, $V4, $V5) {
             echo "<tr>
             <td>".$V1."</td>
             <td>".$V2."</td>
             <td>".$V3."</td>
+			<td><form method='POST'>
+			<input name='SRV' id='SRV' value=".$V4." type='hidden' readonly>
+			<input name='CL' id='CL' value=".$V5." type='hidden' readonly>
+			<input name='SU' id='SU' value=".$V2." type='hidden' readonly>
+			<input class ='deleteSession' type='submit' name='USRSELECT' value='Delete Session'/>
+        	</form>
+			</td>
             </tr>";
-        },  $username, $session, $sessionid);
+        },  $username, $session, $sessionid, $srv1C, $cluster1C);
         }else{
 		
 	    }
@@ -83,10 +93,11 @@ if( isset( $_POST['DBSELECT'] ) )
 if( isset($_POST['USRSELECT'] ) )
     {
 		exec(" /opt/1C/v8.3/x86_64/rac $SRV session --cluster=$CL  terminate --session=$SU");
-	echo "session delete";
+	echo "Session delete";
     }else{
 		
 	}
+
 ?>
 </table>
 </body>
